@@ -1,0 +1,65 @@
+.mainContainer {
+  width: 850px;
+  min-width: 850px;
+  margin: 0 auto;
+  border: 0;
+}
+.body{
+  margin: 0;
+  background-color: antiquewhite;
+  height: 80vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top:-20px;
+}
+
+
+.header{
+  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.UlLista{
+ 
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.UlLista ul{
+  list-style-type: none;
+}
+.ListMenu{
+  float: left;
+}
+
+.ListMenu a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.ListMenu a:hover {
+  background-color: #111;
+}
+
+.search{
+  float:right;
+  padding: 14px 10px;
+}
+
+.footer {
+  position: fixed;
+  margin: 0 auto;
+  border: 0;
+  bottom: 0;
+  width: 850px;
+  background-color: #111d;
+  color: white;
+  text-align: center;
+}
