@@ -4,6 +4,7 @@ import  NavBar  from './navBar';
 import { Router, Route, browserHistory, IndexRoute } from "react-router";
 import Home from './home';
 import About from './about';
+import Info from './info';
 import Contact from './contac';
 import Root from './Root';
 
@@ -19,6 +20,7 @@ class App extends Component {
                  <IndexRoute component ={Home}/>      
                  <Route path = "home" component = {Home} />
                  <Route path = "about" component = {About} />
+                 <Route path = "info" component = {Info} />
                  <Route path = "contact" component = {Contact} />
               </Route>  
            </Router>     

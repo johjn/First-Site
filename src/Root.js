@@ -9,6 +9,7 @@ class Root extends Component {
     let ListMenu = [
         {label:"Home" , link:"/home"},
         {label:"About", link:"/about"},
+        {label:"Info", link:"/info"},
         {label:"Contact", link:"/contact"}
     ]
      
