@@ -4,33 +4,55 @@ import Axios from 'axios';
 
 
 class Edit extends Component {
-  state = {obj:0}
+  state = {id:'',name:'', lastname:'', salary:0}
+
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+  }
   
   componentWillMount(){
     const url = `http://localhost:3000/info/${this.props.params.id}`
     
     Axios.get(url)
     .then(res =>{
-       this.state.obj = res.data[0]
-       this.setState({obj : res.data[0]}) 
+       this.setState({id : res.data[0].id_angajati}) 
+       this.setState({name : res.data[0].name}) 
+       this.setState({lastname : res.data[0].lastname}) 
+       this.setState({salary : res.data[0].salary}) 
 
                 }
          )
    }
+
+   updateinfo(event){
+    const url = `http://localhost:3000/update/${this.props.params.id}`
+
+    Axios.put(url, {
+      name: this.state.name,
+      lsname: this.state.lastname,
+      sal: this.state.salary
+    
+    })
+    .then(res =>{
+      console.log(res)})
+    .catch(err => {
+        console.log(err);
+      });
+   }
   render() {
-    const {obj} = this.state
+    
     return (
       <div className="Edit">
            <form className = "editform">
-            <input className = "id "type = "textfield" placeholder = {obj.id_angajati}/>
+            <input className = "id "type = "textfield"  name = "id" value = {this.state.id || ''}/>
             <tr/>
-            <input className = "name "type = "textfield" placeholder = {obj.name}/>
+            <input className = "name "type = "textfield" name = "name" onChange={this.handleChange.bind(this)} value = {this.state.name}/>
             <tr/>
-            <input className = "lastname "type = "textfield" placeholder = {obj.lastname}/>
+            <input className = "lastname "type = "textfield" name = "lastname" onChange={this.handleChange.bind(this)} value = {this.state.lastname}/>
             <tr/>
-            <input className = "salary "type = "textfield" placeholder = {obj.salary}/>
+            <input className = "salary "type = "textfield" name ="salary" onChange={this.handleChange.bind(this)} value = {this.state.salary}/>
             <tr/>
-            <button>Save</button>
+            <button onClick = {this.updateinfo.bind(this)}>Save</button>
             <button><Link to ="/info">Cancel</Link></button>
          </form>
       </div>

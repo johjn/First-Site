@@ -16,8 +16,8 @@ class Info extends Component {
 
     handleRemove = (e) => {
       console.log(e.id_angajati)
-      const url = 'http://localhost:3000/delete/'+ +e.id_angajati;
-      console.log(url)
+      this.props.params.id = e.id_angajati
+      const url = `http://localhost:3000/delete/${this.props.params.id}`
   
       Axios.delete(url)
         .then(res => {
