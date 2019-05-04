@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import  NavBar  from './navBar';
 import { Router, Route, browserHistory, IndexRoute } from "react-router";
 import Home from './home';
 import About from './about';

@@ -4,48 +4,55 @@ import { Link } from "react-router";
 
 
 class Info extends Component {
-    state = {showinfo:[]}
+  state = {showinfo:[]}
 
-    componentWillMount(){
-     Axios.get('http://localhost:3000/info')
-     .then(res =>{
-             this.setState({showinfo : res.data}) 
-                 }
-          )
-    }
+  componentWillMount(){
+     this.loadDate()
+  }
 
-    handleRemove = (e) => {
-      console.log(e.id_angajati)
-      this.props.params.id = e.id_angajati
-      const url = `http://localhost:3000/delete/${this.props.params.id}`
-  
-      Axios.delete(url)
-        .then(res => {
+  loadDate = () =>{
+    Axios.get('http://localhost:3000/info')
+    .then(res =>{
+      this.setState({showinfo : res.data}) 
+              }
+     )
+  }
+
+  // delete from DB
+  handleRemove = (e) => {
+     this.props.params.id = e.id_angajati
+     const url = `http://localhost:3000/delete/${this.props.params.id}`
+     Axios.delete(url)
+       .then(res => {
           console.log(res);
+          this.loadDate();
         })
         .catch(err => {
           console.log(err);
-        });
-    };
+     });
+  };
   
   render() {
-      const {showinfo} = this.state
-      let head = ["","","Id","Name","Lastname","Salary"]
+    const {showinfo} = this.state
+    let head = ["","","Name","Lastname","Salary"]
 
     return (
       <div className="info">
-          <table>
-              <thead>
-                  <tr>
+          <button className = "add"><Link to ={`/edit/insert`} >Add</Link></button>
+          <table className = "angajati">
+              <thead key ="thead">
+                <tr key = "trhead">
                     {head.map((elemh,indh) => <td key = {"head_" + + indh}>{elemh}</td>)}
-                  </tr>
+                </tr>
               </thead>
-              <tbody>
+              <tbody key = "tbody">
                  {showinfo.map((elem,index) =>(
-                     <tr>
-                        <td><button><Link to ={`/edit/${elem.id_angajati}`}>Edit</Link></button></td>
-                        <td><button onClick={this.handleRemove.bind(this,elem)}>Delete</button></td>
-                       {Object.values(elem).map((subelem,i) => <td key = {"cell_" + + i}>{subelem}</td>)}
+                    <tr key = {"trbody" + +index}>
+                       <td key = {"but" + + index}><button><Link to ={`/edit/${elem.id_angajati}`}>Edit</Link></button></td>
+                       <td key = {"but2" + + index}><button onClick={this.handleRemove.bind(this,elem)}>Delete</button></td>
+                       {Object.values(elem).map((subelem,i) => (
+                         i !== 0 ? <td key = {"cell_" + + i}>{subelem}</td>:null)
+                         )}
                     </tr>))}
               </tbody>
           </table>

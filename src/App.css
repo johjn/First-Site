@@ -3,6 +3,7 @@
   min-width: 850px;
   margin: 0 auto;
   border: 0;
+  padding: 0;
 }
 .body{
   margin: 0;
@@ -10,7 +11,6 @@
   height: 80vh;
   padding-left: 50px;
   padding-right: 50px;
-  margin-top:-20px;
 }
 
 
@@ -62,4 +62,58 @@
   background-color: #111d;
   color: white;
   text-align: center;
+}
+
+.name, .lastname,
+.salary {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn_edit {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.home h1{
+  margin: 0;
+  padding: 0;
+}
+
+.angajati {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.angajati td, .angajati th {
+  border: 1px solid rgb(243, 238, 238);
+  padding: 8px;
+}
+
+.angajati tr:nth-child(even){background-color: #ff9191;}
+
+.angajati tr:hover {background-color: #ddd;}
+
+.angajati thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #333;
+  color: white;
+}
+.add {
+  margin:10px
 }
